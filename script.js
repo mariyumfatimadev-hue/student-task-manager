@@ -1,4 +1,4 @@
-const tasks = [];
+let tasks = [];
 
 const form = document.getElementById("task-form");
 const titleInput = document.getElementById("task-title");
@@ -10,7 +10,18 @@ function renderTasks() {
 
   tasks.forEach(function (task) {
     const li = document.createElement("li");
-    li.textContent = task.title + " - " + task.description;
+    li.textContent = task.title + " - " + task.description + " ";
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.addEventListener("click", function () {
+      tasks = tasks.filter(function (t) {
+        return t.id !== task.id;
+      });
+      renderTasks();
+    });
+
+    li.appendChild(deleteBtn);
     list.appendChild(li);
   });
 }
