@@ -12,6 +12,18 @@ function renderTasks() {
     const li = document.createElement("li");
     li.textContent = task.title + " - " + task.description + " ";
 
+    if (task.completed) {
+      li.classList.add("completed");
+      li.style.textDecoration = "line-through";
+    }
+
+    const completeBtn = document.createElement("button");
+    completeBtn.textContent = task.completed ? "Undo" : "Complete";
+    completeBtn.addEventListener("click", function () {
+      task.completed = !task.completed;
+      renderTasks();
+    });
+
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.addEventListener("click", function () {
@@ -21,6 +33,7 @@ function renderTasks() {
       renderTasks();
     });
 
+    li.appendChild(completeBtn);
     li.appendChild(deleteBtn);
     list.appendChild(li);
   });
