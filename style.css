@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: #dbeafe;
+  color: #333;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* ===== Heading ===== */
+h1 {
+  text-align: center;
+  font-size: 36px;
+  color: #3b5bdb;
+  max-width: 1200px;
+  margin: 10px auto 24px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Task form ===== */
+#task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto 28px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+#task-form input,
+#task-form textarea {
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+#task-form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+#task-form input:focus,
+#task-form textarea:focus {
+  outline: none;
+  border-color: #3b5bdb;
+}
+
+/* ===== Buttons ===== */
+button {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #3b5bdb;
+  color: #fff;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background: #2f4bb8;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* ===== Task list (cards) ===== */
+#task-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#task-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  font-size: 16px;
+  line-height: 1.4;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#task-list li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+#task-list li button {
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+/* Last button in a card is Delete */
+#task-list li button:last-child {
+  background: #e03131;
+}
+
+#task-list li button:last-child:hover {
+  background: #c92a2a;
+}
+
+#task-list li.completed {
+  opacity: 0.7;
+}
+
+/* ===== Responsive design ===== */
+@media (max-width: 768px) {
+  body { padding: 16px; }
+  h1 { font-size: 28px; }
+  #task-list {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  body { padding: 12px; }
+  h1 { font-size: 22px; padding: 14px; }
+  #task-form { padding: 14px; }
+  #task-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  #task-list li { padding: 14px; }
+  #task-list li button {
+    flex: 1;
+    padding: 10px;
+  }
+}
