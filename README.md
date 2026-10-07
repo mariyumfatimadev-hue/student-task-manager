@@ -1,4 +1,4 @@
-# Student Task Manager
+# Student Task Manager system
 
 ## Project Description
 A simple web application where students can add, display, complete, delete and search tasks. Built to practice Git and GitHub collaboration.
