@@ -10,19 +10,12 @@ function renderTasks() {
 
   tasks.forEach(function (task) {
     const li = document.createElement("li");
-    li.textContent = task.title + " - " + task.description + " ";
 
-    if (task.completed) {
-      li.classList.add("completed");
-      li.style.textDecoration = "line-through";
+    let text = task.title;
+    if (task.description) {
+      text = text + " - " + task.description;
     }
-
-    const completeBtn = document.createElement("button");
-    completeBtn.textContent = task.completed ? "Undo" : "Complete";
-    completeBtn.addEventListener("click", function () {
-      task.completed = !task.completed;
-      renderTasks();
-    });
+    li.textContent = text + " ";
 
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
@@ -33,7 +26,6 @@ function renderTasks() {
       renderTasks();
     });
 
-    li.appendChild(completeBtn);
     li.appendChild(deleteBtn);
     list.appendChild(li);
   });
@@ -50,7 +42,7 @@ form.addEventListener("submit", function (event) {
   const task = {
     id: Date.now(),
     title: title,
-    description: descInput.value,
+    description: descInput.value.trim(),
     completed: false
   };
 
