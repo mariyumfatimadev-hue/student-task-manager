@@ -4,11 +4,17 @@ const form = document.getElementById("task-form");
 const titleInput = document.getElementById("task-title");
 const descInput = document.getElementById("task-description");
 const list = document.getElementById("task-list");
+const searchInput = document.getElementById("search-input");
 
 function renderTasks() {
   list.innerHTML = "";
 
-  tasks.forEach(function (task) {
+  const query = searchInput.value.toLowerCase();
+  const visibleTasks = tasks.filter(function (task) {
+    return task.title.toLowerCase().includes(query);
+  });
+
+  visibleTasks.forEach(function (task) {
     const li = document.createElement("li");
 
     let text = task.title;
@@ -50,3 +56,5 @@ form.addEventListener("submit", function (event) {
   renderTasks();
   form.reset();
 });
+
+searchInput.addEventListener("input", renderTasks);
